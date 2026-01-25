@@ -6,9 +6,18 @@ const MainSearch = () => {
         <h2>We compare hotel prices from over 100 sites</h2>
 
         <form className="flex flex-row shadow-md">
-            <input className="border-2 px-4 py-2 basis-2/5"/>
-            <input className="border-2 px-4 py-2 basis-1/5"/>
-            <input className="border-2 px-4 py-2 basis-1/5"/>
+            <fieldset className="basis-2/5 border-2">
+                <legend>Hotel</legend>
+                <input/>
+            </fieldset>
+            <fieldset className="basis-2/5 border-2">
+                <legend>Date</legend>
+                <input/>
+            </fieldset>
+            <fieldset className="basis-2/5 border-2">
+                <legend>Guest</legend>
+                <input/>
+            </fieldset>
             <button type="submit" className="basis-1/5 border">Submit</button>
         </form>
     </section>
