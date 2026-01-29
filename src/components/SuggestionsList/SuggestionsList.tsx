@@ -1,7 +1,5 @@
 const SuggestionsList = () => {
-  return (
-    <div>SuggestionsList</div>
-  )
-}
+  return <div>SuggestionsList</div>;
+};
 
-export default SuggestionsList
+export default SuggestionsList;

@@ -1,110 +1,110 @@
 {
-	"slug": "berlin",
-	"meta": {
-		"title": "Berlin Travel Guide – Best Time to Visit, Things to Do & Tips",
-		"description": "Discover Berlin with our complete travel guide. Explore top attractions, neighborhoods, food spots, best time to visit, and local tips.",
-		"canonical": "https://www.trivago.com/destinations/berlin"
-	},
-	"hero": {
-		"title": "Berlin Travel Guide",
-		"subtitle": "History, culture, nightlife, and modern creativity",
-		"intro": "Berlin is a city where history and modern culture coexist. From iconic landmarks and world-class museums to underground nightlife and creative neighborhoods, Berlin offers something for every traveler.",
-		"image": {
-			"src": "/images/berlin/hero.jpg",
-			"alt": "Berlin skyline with Brandenburg Gate at sunset"
-		}
-	},
-	"bestTimeToVisit": {
-		"summary": "The best time to visit Berlin is from May to September when the weather is mild and the city comes alive with festivals and outdoor events.",
-		"seasons": [
-			{
-				"name": "Spring",
-				"months": "March – May",
-				"description": "Pleasant weather, blooming parks, fewer tourists."
-			},
-			{
-				"name": "Summer",
-				"months": "June – August",
-				"description": "Warm temperatures, festivals, open-air clubs, peak tourist season."
-			},
-			{
-				"name": "Autumn",
-				"months": "September – October",
-				"description": "Cooler weather, cultural events, and beautiful fall colors."
-			},
-			{
-				"name": "Winter",
-				"months": "November – February",
-				"description": "Christmas markets, museums, and fewer crowds."
-			}
-		]
-	},
-	"sections": [
-		{
-			"id": "getting-around",
-			"title": "Getting Around Berlin",
-			"content": "Berlin has one of the best public transport systems in Europe, including U-Bahn, S-Bahn, buses, and trams. A day pass offers unlimited travel and is ideal for tourists."
-		},
-		{
-			"id": "neighborhoods",
-			"title": "Top Neighborhoods to Explore",
-			"content": "Each Berlin neighborhood has a unique vibe. Mitte is historic and central, Kreuzberg is vibrant and multicultural, Prenzlauer Berg is relaxed and family-friendly, while Friedrichshain is known for nightlife."
-		},
-		{
-			"id": "food",
-			"title": "Food & Local Cuisine",
-			"content": "Berlin is famous for its street food culture. Try Currywurst, Döner Kebab, and explore international cuisine from around the world."
-		}
-	],
-	"thingsToDo": [
-		{
-			"id": 1,
-			"title": "Brandenburg Gate",
-			"category": "Sightseeing",
-			"tags": ["history", "landmark"],
-			"description": "One of Berlin’s most iconic landmarks and a symbol of German unity."
-		},
-		{
-			"id": 2,
-			"title": "Berlin Wall Memorial",
-			"category": "Museums",
-			"tags": ["history", "museum"],
-			"description": "Learn about the history of the Berlin Wall and its impact on the city."
-		},
-		{
-			"id": 3,
-			"title": "Museum Island",
-			"category": "Museums",
-			"tags": ["art", "culture"],
-			"description": "A UNESCO World Heritage site featuring five world-class museums."
-		},
-		{
-			"id": 4,
-			"title": "East Side Gallery",
-			"category": "Art",
-			"tags": ["street-art", "history"],
-			"description": "The longest remaining section of the Berlin Wall, covered in murals."
-		},
-		{
-			"id": 5,
-			"title": "Kreuzberg Nightlife",
-			"category": "Nightlife",
-			"tags": ["clubs", "bars"],
-			"description": "Experience Berlin’s famous nightlife in Kreuzberg’s clubs and bars."
-		}
-	],
-	"faq": [
-		{
-			"question": "Is Berlin expensive to visit?",
-			"answer": "Berlin is generally more affordable than many other European capitals, especially when it comes to food, transport, and attractions."
-		},
-		{
-			"question": "How many days are enough for Berlin?",
-			"answer": "Three to four days are enough to explore major attractions, museums, and neighborhoods."
-		},
-		{
-			"question": "Is Berlin good for solo travelers?",
-			"answer": "Yes, Berlin is considered safe and welcoming for solo travelers, with excellent public transport and diverse activities."
-		}
-	]
+  "slug": "berlin",
+  "meta": {
+    "title": "Berlin Travel Guide – Best Time to Visit, Things to Do & Tips",
+    "description": "Discover Berlin with our complete travel guide. Explore top attractions, neighborhoods, food spots, best time to visit, and local tips.",
+    "canonical": "https://www.trivago.com/destinations/berlin"
+  },
+  "hero": {
+    "title": "Berlin Travel Guide",
+    "subtitle": "History, culture, nightlife, and modern creativity",
+    "intro": "Berlin is a city where history and modern culture coexist. From iconic landmarks and world-class museums to underground nightlife and creative neighborhoods, Berlin offers something for every traveler.",
+    "image": {
+      "src": "/images/berlin/hero.jpg",
+      "alt": "Berlin skyline with Brandenburg Gate at sunset"
+    }
+  },
+  "bestTimeToVisit": {
+    "summary": "The best time to visit Berlin is from May to September when the weather is mild and the city comes alive with festivals and outdoor events.",
+    "seasons": [
+      {
+        "name": "Spring",
+        "months": "March – May",
+        "description": "Pleasant weather, blooming parks, fewer tourists."
+      },
+      {
+        "name": "Summer",
+        "months": "June – August",
+        "description": "Warm temperatures, festivals, open-air clubs, peak tourist season."
+      },
+      {
+        "name": "Autumn",
+        "months": "September – October",
+        "description": "Cooler weather, cultural events, and beautiful fall colors."
+      },
+      {
+        "name": "Winter",
+        "months": "November – February",
+        "description": "Christmas markets, museums, and fewer crowds."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "getting-around",
+      "title": "Getting Around Berlin",
+      "content": "Berlin has one of the best public transport systems in Europe, including U-Bahn, S-Bahn, buses, and trams. A day pass offers unlimited travel and is ideal for tourists."
+    },
+    {
+      "id": "neighborhoods",
+      "title": "Top Neighborhoods to Explore",
+      "content": "Each Berlin neighborhood has a unique vibe. Mitte is historic and central, Kreuzberg is vibrant and multicultural, Prenzlauer Berg is relaxed and family-friendly, while Friedrichshain is known for nightlife."
+    },
+    {
+      "id": "food",
+      "title": "Food & Local Cuisine",
+      "content": "Berlin is famous for its street food culture. Try Currywurst, Döner Kebab, and explore international cuisine from around the world."
+    }
+  ],
+  "thingsToDo": [
+    {
+      "id": 1,
+      "title": "Brandenburg Gate",
+      "category": "Sightseeing",
+      "tags": ["history", "landmark"],
+      "description": "One of Berlin’s most iconic landmarks and a symbol of German unity."
+    },
+    {
+      "id": 2,
+      "title": "Berlin Wall Memorial",
+      "category": "Museums",
+      "tags": ["history", "museum"],
+      "description": "Learn about the history of the Berlin Wall and its impact on the city."
+    },
+    {
+      "id": 3,
+      "title": "Museum Island",
+      "category": "Museums",
+      "tags": ["art", "culture"],
+      "description": "A UNESCO World Heritage site featuring five world-class museums."
+    },
+    {
+      "id": 4,
+      "title": "East Side Gallery",
+      "category": "Art",
+      "tags": ["street-art", "history"],
+      "description": "The longest remaining section of the Berlin Wall, covered in murals."
+    },
+    {
+      "id": 5,
+      "title": "Kreuzberg Nightlife",
+      "category": "Nightlife",
+      "tags": ["clubs", "bars"],
+      "description": "Experience Berlin’s famous nightlife in Kreuzberg’s clubs and bars."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is Berlin expensive to visit?",
+      "answer": "Berlin is generally more affordable than many other European capitals, especially when it comes to food, transport, and attractions."
+    },
+    {
+      "question": "How many days are enough for Berlin?",
+      "answer": "Three to four days are enough to explore major attractions, museums, and neighborhoods."
+    },
+    {
+      "question": "Is Berlin good for solo travelers?",
+      "answer": "Yes, Berlin is considered safe and welcoming for solo travelers, with excellent public transport and diverse activities."
+    }
+  ]
 }

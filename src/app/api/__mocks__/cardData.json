@@ -1,74 +1,74 @@
 {
-	"cards": [
-		{
-			"image": {
-				"src": "https://imgcy.trivago.com/c_fill,d_dummy.jpeg,e_sharpen:60,f_auto,h_267,q_40,w_400/partner-images/6e/e9/068d5f0312f8463d58b415552d6f73df75ad58a3a8d55c72220f94625bf7.jpeg",
-				"alt": "Hotel Belvedere"
-			},
-			"title": "Hotel Belvedere",
-			"subTitle": "Zakopane, Poland",
-			"price": "689",
-			"currency": "PLN",
-			"cta": {
-				"href": "",
-				"title": "Check Deal"
-			}
-		},
-		{
-			"image": {
-				"src": "https://imgcy.trivago.com/c_fill,d_dummy.jpeg,e_sharpen:60,f_auto,h_267,q_40,w_400/partner-images/6e/e9/068d5f0312f8463d58b415552d6f73df75ad58a3a8d55c72220f94625bf7.jpeg",
-				"alt": "Aparthotel Giewont"
-			},
-			"title": "Aparthotel Giewont",
-			"subTitle": "Zakopane, Poland",
-			"price": "689",
-			"currency": "PLN",
-			"cta": {
-				"href": "",
-				"title": "Check Deal"
-			}
-		},
-		{
-			"image": {
-				"src": "https://imgcy.trivago.com/c_fill,d_dummy.jpeg,e_sharpen:60,f_auto,h_267,q_40,w_400/partner-images/6e/e9/068d5f0312f8463d58b415552d6f73df75ad58a3a8d55c72220f94625bf7.jpeg",
-				"alt": "Willa Labelle"
-			},
-			"title": "Willa Labelle",
-			"subTitle": "Zakopane, Poland",
-			"price": "689",
-			"currency": "PLN",
-			"cta": {
-				"href": "",
-				"title": "Check Deal"
-			}
-		},
-		{
-			"image": {
-				"src": "https://imgcy.trivago.com/c_fill,d_dummy.jpeg,e_sharpen:60,f_auto,h_267,q_40,w_400/partner-images/6e/e9/068d5f0312f8463d58b415552d6f73df75ad58a3a8d55c72220f94625bf7.jpeg",
-				"alt": "Pensjonat u Ani"
-			},
-			"title": "Pensjonat u Ani",
-			"subTitle": "Zakopane, Poland",
-			"price": "689",
-			"currency": "PLN",
-			"cta": {
-				"href": "",
-				"title": "Check Deal"
-			}
-		},
-		{
-			"image": {
-				"src": "https://imgcy.trivago.com/c_fill,d_dummy.jpeg,e_sharpen:60,f_auto,h_267,q_40,w_400/partner-images/6e/e9/068d5f0312f8463d58b415552d6f73df75ad58a3a8d55c72220f94625bf7.jpeg",
-				"alt": "Helan Family & SPA"
-			},
-			"title": "Helan Family & SPA",
-			"subTitle": "Zakopane, Poland",
-			"price": "689",
-			"currency": "PLN",
-			"cta": {
-				"href": "",
-				"title": "Check Deal"
-			}
-		}
-	]
+  "cards": [
+    {
+      "image": {
+        "src": "https://imgcy.trivago.com/c_fill,d_dummy.jpeg,e_sharpen:60,f_auto,h_267,q_40,w_400/partner-images/6e/e9/068d5f0312f8463d58b415552d6f73df75ad58a3a8d55c72220f94625bf7.jpeg",
+        "alt": "Hotel Belvedere"
+      },
+      "title": "Hotel Belvedere",
+      "subTitle": "Zakopane, Poland",
+      "price": "689",
+      "currency": "PLN",
+      "cta": {
+        "href": "",
+        "title": "Check Deal"
+      }
+    },
+    {
+      "image": {
+        "src": "https://imgcy.trivago.com/c_fill,d_dummy.jpeg,e_sharpen:60,f_auto,h_267,q_40,w_400/partner-images/6e/e9/068d5f0312f8463d58b415552d6f73df75ad58a3a8d55c72220f94625bf7.jpeg",
+        "alt": "Aparthotel Giewont"
+      },
+      "title": "Aparthotel Giewont",
+      "subTitle": "Zakopane, Poland",
+      "price": "689",
+      "currency": "PLN",
+      "cta": {
+        "href": "",
+        "title": "Check Deal"
+      }
+    },
+    {
+      "image": {
+        "src": "https://imgcy.trivago.com/c_fill,d_dummy.jpeg,e_sharpen:60,f_auto,h_267,q_40,w_400/partner-images/6e/e9/068d5f0312f8463d58b415552d6f73df75ad58a3a8d55c72220f94625bf7.jpeg",
+        "alt": "Willa Labelle"
+      },
+      "title": "Willa Labelle",
+      "subTitle": "Zakopane, Poland",
+      "price": "689",
+      "currency": "PLN",
+      "cta": {
+        "href": "",
+        "title": "Check Deal"
+      }
+    },
+    {
+      "image": {
+        "src": "https://imgcy.trivago.com/c_fill,d_dummy.jpeg,e_sharpen:60,f_auto,h_267,q_40,w_400/partner-images/6e/e9/068d5f0312f8463d58b415552d6f73df75ad58a3a8d55c72220f94625bf7.jpeg",
+        "alt": "Pensjonat u Ani"
+      },
+      "title": "Pensjonat u Ani",
+      "subTitle": "Zakopane, Poland",
+      "price": "689",
+      "currency": "PLN",
+      "cta": {
+        "href": "",
+        "title": "Check Deal"
+      }
+    },
+    {
+      "image": {
+        "src": "https://imgcy.trivago.com/c_fill,d_dummy.jpeg,e_sharpen:60,f_auto,h_267,q_40,w_400/partner-images/6e/e9/068d5f0312f8463d58b415552d6f73df75ad58a3a8d55c72220f94625bf7.jpeg",
+        "alt": "Helan Family & SPA"
+      },
+      "title": "Helan Family & SPA",
+      "subTitle": "Zakopane, Poland",
+      "price": "689",
+      "currency": "PLN",
+      "cta": {
+        "href": "",
+        "title": "Check Deal"
+      }
+    }
+  ]
 }

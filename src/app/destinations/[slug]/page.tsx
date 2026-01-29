@@ -24,80 +24,77 @@ add a small “perf debug” panel locally (optional): show TTFB, cache hit head
 export const revalidate = 3600; // 1hour
 
 type Props = {
-	params: Promise<{ slug: string }>;
-	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export async function generateMetadata({
-	params,
-	searchParams,
+  params,
+  searchParams,
 }: Props): Promise<Metadata> {
-	try {
-		const { slug } = await params;
-		const data = await getDestinationData(slug);
+  try {
+    const { slug } = await params;
+    const data = await getDestinationData(slug);
 
-		const title =
-			data.meta?.title ?? `${data.hero?.title ?? slug} – Travel Guide`;
-		const description =
-			data.meta?.description ?? data.hero?.intro ?? 'Destination guide.';
+    const title =
+      data.meta?.title ?? `${data.hero?.title ?? slug} – Travel Guide`;
+    const description =
+      data.meta?.description ?? data.hero?.intro ?? 'Destination guide.';
 
-		const canonical = data.meta?.canonical ?? `/destinations/${slug}`;
-		const ogImage = data.hero?.image?.src ?? '/images/og-default.jpg';
+    const canonical = data.meta?.canonical ?? `/destinations/${slug}`;
+    const ogImage = data.hero?.image?.src ?? '/images/og-default.jpg';
 
-		return {
-			title,
-			description,
-			alternates: { canonical },
-			openGraph: {
-				title,
-				description,
-				url: canonical,
-				images: [{ url: ogImage, alt: data.hero?.image?.alt ?? title }],
-			},
-			twitter: {
-				card: 'summary_large_image',
-				title,
-				description,
-				images: [ogImage],
-			},
-		};
-	} catch {
-		return {};
-	}
+    return {
+      title,
+      description,
+      alternates: { canonical },
+      openGraph: {
+        title,
+        description,
+        url: canonical,
+        images: [{ url: ogImage, alt: data.hero?.image?.alt ?? title }],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+        images: [ogImage],
+      },
+    };
+  } catch {
+    return {};
+  }
 }
 
 const DestinationsPage = async ({
-	params,
+  params,
 }: {
-	params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>;
 }) => {
-	const { slug } = await params;
-	const filePath = path.join(process.cwd(), 'data', `${slug}.json`);
-	let data;
-	try {
-		const file = await readFile(filePath, 'utf-8');
-		data = JSON.parse(file);
-	} catch {
-		notFound();
-	}
-	console.log('filePath', filePath);
+  const { slug } = await params;
+  const filePath = path.join(process.cwd(), 'data', `${slug}.json`);
+  let data;
+  try {
+    const file = await readFile(filePath, 'utf-8');
+    data = JSON.parse(file);
+  } catch {
+    notFound();
+  }
+  console.log('filePath', filePath);
 
-	return (
-		<main>
-			{/* <GuideHero />
+  return (
+    <main>
+      {/* <GuideHero />
 			<RichTextSection />
 			<CardGrid />
 			<FilterChips />
 			<FAQ /> */}
-			<h1>{data.hero.title}</h1>
-			<p>{data.hero.intro}</p>
+      <h1>{data.hero.title}</h1>
+      <p>{data.hero.intro}</p>
 
-			<FAQSchema
-				slug={slug}
-				faq={data.faq}
-			/>
-		</main>
-	);
+      <FAQSchema slug={slug} faq={data.faq} />
+    </main>
+  );
 };
 
 export default DestinationsPage;
