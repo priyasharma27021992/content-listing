@@ -1,4 +1,6 @@
-import { ReactNode, useContext, useRef, useState } from 'react';
+'use client';
+
+import { ReactNode, useContext, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { CarouselContext } from '@/context/CarouselContext';
 
@@ -13,10 +15,10 @@ interface ChildrenOptionalProps {
 }
 
 const Carousel = ({ children }: ChildrenProps) => {
-  const [visibleSlide, setVisibleSlide] = useState(0);
+  const [scrollEl, setScrollEl] = useState(null);
 
   return (
-    <CarouselContext value={{ visibleSlide, setVisibleSlide }}>
+    <CarouselContext value={{ scrollEl, setScrollEl }}>
       <div
         className='relative w-full max-w-48 sm:max-w-xs md:max-w-sm'
         role='region'
@@ -30,20 +32,15 @@ const Carousel = ({ children }: ChildrenProps) => {
 
 const CarouselContent = ({ children }: ChildrenProps) => {
   const carouselRef = useRef(null);
-  const { setVisibleSlide } = useContext(CarouselContext);
-  const handleScroll = () => {
-    if (!carouselRef.current) return;
-    let { width } = carouselRef.current?.getBoundingClientRect();
-    let { scrollLeft } = carouselRef.current;
-    setVisibleSlide(Math.round(scrollLeft / width));
-  };
+  const { setScrollEl } = useContext(CarouselContext);
+
+  useEffect(() => {
+    if (!carouselRef?.current) return;
+    setScrollEl(carouselRef?.current);
+  }, []);
 
   return (
-    <div
-      className='flex overflow-hidden'
-      onScroll={handleScroll}
-      ref={carouselRef}
-    >
+    <div className='flex overflow-hidden' ref={carouselRef}>
       {children}
     </div>
   );
@@ -61,11 +58,31 @@ const CarouselItem = ({ children, className }: ChildrenProps) => {
 };
 
 const CarouselPrevious = ({ children }: ChildrenOptionalProps) => {
-  return <div className='absolute top-1/2'>{children ?? `<`}</div>;
+  const { scrollEl } = useContext(CarouselContext);
+
+  const handleScroll = () => {
+    if (!scrollEl) return;
+    scrollEl.scrollBy({ left: 300, behaviour: 'smooth' });
+  };
+  return (
+    <button className='absolute top-1/2' onClick={handleScroll}>
+      {children ?? `<`}
+    </button>
+  );
 };
 
 const CarouselNext = ({ children }: ChildrenOptionalProps) => {
-  return <div className='absolute top-1/2 right-0'>{children ?? `>`}</div>;
+  const { scrollEl } = useContext(CarouselContext);
+
+  const handleScroll = () => {
+    if (!scrollEl) return;
+    scrollEl?.scrollBy({ left: 300, behaviour: 'smooth' });
+  };
+  return (
+    <button className='absolute top-1/2 right-0' onClick={handleScroll}>
+      {children ?? `>`}
+    </button>
+  );
 };
 
 export {

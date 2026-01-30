@@ -9,6 +9,7 @@ import {
 const PopularDestinations = () => {
   return (
     <section>
+      <h2>Popular Destinations</h2>
       <Carousel>
         <CarouselContent>
           {Array.from({ length: 8 }, (_, index) => (
