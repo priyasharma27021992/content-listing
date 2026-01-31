@@ -15,10 +15,11 @@ interface ChildrenOptionalProps {
 }
 
 const Carousel = ({ children }: ChildrenProps) => {
-  const [scrollEl, setScrollEl] = useState(null);
+  const [scrollEl, setScrollEl] = useState<ReactNode | null>(null);
+  const [stepPx, setStepPx] = useState(300);
 
   return (
-    <CarouselContext value={{ scrollEl, setScrollEl }}>
+    <CarouselContext value={{ scrollEl, setScrollEl, stepPx, setStepPx }}>
       <div
         className='relative w-full max-w-48 sm:max-w-xs md:max-w-sm'
         role='region'
@@ -40,13 +41,18 @@ const CarouselContent = ({ children }: ChildrenProps) => {
   }, []);
 
   return (
-    <div className='flex overflow-hidden' ref={carouselRef}>
+    <div className='flex overflow-x-auto' ref={carouselRef}>
       {children}
     </div>
   );
 };
 
-const CarouselItem = ({ children, className }: ChildrenProps) => {
+const CarouselItem = ({
+  children,
+  className,
+  cardWidth,
+  gap,
+}: ChildrenProps) => {
   return (
     <div
       role='group'
@@ -62,7 +68,7 @@ const CarouselPrevious = ({ children }: ChildrenOptionalProps) => {
 
   const handleScroll = () => {
     if (!scrollEl) return;
-    scrollEl.scrollBy({ left: 300, behaviour: 'smooth' });
+    scrollEl.scrollBy({ left: -300, behavior: 'smooth' });
   };
   return (
     <button className='absolute top-1/2' onClick={handleScroll}>
@@ -76,7 +82,7 @@ const CarouselNext = ({ children }: ChildrenOptionalProps) => {
 
   const handleScroll = () => {
     if (!scrollEl) return;
-    scrollEl?.scrollBy({ left: 300, behaviour: 'smooth' });
+    scrollEl?.scrollBy({ left: 300, behavior: 'smooth' });
   };
   return (
     <button className='absolute top-1/2 right-0' onClick={handleScroll}>

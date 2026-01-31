@@ -1,6 +1,15 @@
-import { createContext } from 'react';
+import { createContext, ReactNode } from 'react';
 
-export const CarouselContext = createContext({
+type CarouselContextProps = {
+  scrollEl: ReactNode | null;
+  setScrollEl: (element: ReactNode | null) => void;
+  stepPx: number;
+  setStepPx: (stepPx: number) => void;
+};
+
+export const CarouselContext = createContext<CarouselContextProps>({
   scrollEl: null,
-  setScrollEle: () => {},
+  setScrollEl: () => {},
+  stepPx: 300,
+  setStepPx: () => {},
 });
