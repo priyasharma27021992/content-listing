@@ -1,15 +1,16 @@
 'use client';
 
-import { ReactNode, useContext, useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { CarouselContext } from '@/context/CarouselContext';
+import { useCarouselContext } from '@/context/hooks';
 
 interface ChildrenProps {
   children: ReactNode;
   className?: string;
 }
 
-interface ChildrenOptionalProps {
+interface OptionalChildrenProps {
   children?: ReactNode;
   className?: string;
 }
@@ -21,7 +22,7 @@ const Carousel = ({ children }: ChildrenProps) => {
   return (
     <CarouselContext value={{ scrollEl, setScrollEl, stepPx, setStepPx }}>
       <div
-        className='relative w-full max-w-48 sm:max-w-xs md:max-w-sm'
+        className='relative w-full max-w-48 sm:max-w-xs md:max-w-sm lg:max-w-xl'
         role='region'
         aria-roledescription='carousel'
       >
@@ -31,17 +32,17 @@ const Carousel = ({ children }: ChildrenProps) => {
   );
 };
 
-const CarouselContent = ({ children }: ChildrenProps) => {
+const CarouselContent = ({ children, className }: ChildrenProps) => {
   const carouselRef = useRef(null);
-  const { setScrollEl } = useContext(CarouselContext);
+  const { setScrollEl } = useCarouselContext();
 
   useEffect(() => {
     if (!carouselRef?.current) return;
     setScrollEl(carouselRef?.current);
-  }, []);
+  }, [setScrollEl]);
 
   return (
-    <div className='flex overflow-x-auto' ref={carouselRef}>
+    <div className={classnames('flex overflow-x-auto', className)} ref={carouselRef}>
       {children}
     </div>
   );
@@ -50,42 +51,53 @@ const CarouselContent = ({ children }: ChildrenProps) => {
 const CarouselItem = ({
   children,
   className,
-  cardWidth,
-  gap,
 }: ChildrenProps) => {
+  const itemRef = useRef(null);
+  const { setStepPx } = useCarouselContext();
+
+  useEffect(() => {
+    if(!itemRef.current)
+      return;
+    setStepPx(itemRef.current.offsetWidth)
+  },[setStepPx]);
+
   return (
     <div
-      role='group'
       className={classnames('min-w-0 shrink-0 grow-0', className)}
+      ref={itemRef}
     >
       {children}
     </div>
   );
 };
 
-const CarouselPrevious = ({ children }: ChildrenOptionalProps) => {
-  const { scrollEl } = useContext(CarouselContext);
+interface CarouselIconProps extends OptionalChildrenProps{
+  scrollByCards?: number
+} 
+
+const CarouselPrevious = ({ children, scrollByCards = 2 }: CarouselIconProps) => {
+  const { scrollEl, stepPx } = useCarouselContext();
 
   const handleScroll = () => {
     if (!scrollEl) return;
-    scrollEl.scrollBy({ left: -300, behavior: 'smooth' });
+    scrollEl.scrollBy({ left: -stepPx*scrollByCards, behavior: 'smooth' });
   };
   return (
-    <button className='absolute top-1/2' onClick={handleScroll}>
+    <button className='absolute top-1/2' onClick={handleScroll} aria-label='Previous'>
       {children ?? `<`}
     </button>
   );
 };
 
-const CarouselNext = ({ children }: ChildrenOptionalProps) => {
-  const { scrollEl } = useContext(CarouselContext);
+const CarouselNext = ({ children, scrollByCards = 2 }: CarouselIconProps) => {
+  const { scrollEl, stepPx } = useCarouselContext();
 
   const handleScroll = () => {
     if (!scrollEl) return;
-    scrollEl?.scrollBy({ left: 300, behavior: 'smooth' });
+    scrollEl?.scrollBy({ left: stepPx*scrollByCards, behavior: 'smooth' });
   };
   return (
-    <button className='absolute top-1/2 right-0' onClick={handleScroll}>
+    <button className='absolute top-1/2 right-0' onClick={handleScroll} aria-label='Next'>
       {children ?? `>`}
     </button>
   );
