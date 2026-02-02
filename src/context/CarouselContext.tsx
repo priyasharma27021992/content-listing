@@ -1,8 +1,8 @@
-import { createContext, ReactNode } from 'react';
+import { createContext } from 'react';
 
 type CarouselContextProps = {
-  scrollEl: ReactNode | null;
-  setScrollEl: (element: ReactNode | null) => void;
+  scrollEl: HTMLDivElement | null;
+  setScrollEl: (element: HTMLDivElement | null) => void;
   stepPx: number;
   setStepPx: (stepPx: number) => void;
 };

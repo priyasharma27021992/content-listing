@@ -4,6 +4,7 @@ import { ReactNode, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { CarouselContext } from '@/context/CarouselContext';
 import { useCarouselContext } from '@/context/hooks';
+import Image from 'next/image';
 
 interface ChildrenProps {
   children: ReactNode;
@@ -16,13 +17,13 @@ interface OptionalChildrenProps {
 }
 
 const Carousel = ({ children }: ChildrenProps) => {
-  const [scrollEl, setScrollEl] = useState<ReactNode | null>(null);
+  const [scrollEl, setScrollEl] = useState<HTMLDivElement | null>(null);
   const [stepPx, setStepPx] = useState(300);
 
   return (
     <CarouselContext value={{ scrollEl, setScrollEl, stepPx, setStepPx }}>
       <div
-        className='relative w-full max-w-48 sm:max-w-xs md:max-w-sm lg:max-w-xl'
+        className='relative w-full max-w-48 sm:max-w-xs md:max-w-sm lg:max-w-6xl'
         role='region'
         aria-roledescription='carousel'
       >
@@ -48,11 +49,18 @@ const CarouselContent = ({ children, className }: ChildrenProps) => {
   );
 };
 
+interface CarouselItemProps extends ChildrenProps{
+  index: number,
+  total: number
+}
+
 const CarouselItem = ({
   children,
   className,
-}: ChildrenProps) => {
-  const itemRef = useRef(null);
+  index,
+  total
+}: CarouselItemProps) => {
+  const itemRef = useRef<HTMLDivElement | null>(null);
   const { setStepPx } = useCarouselContext();
 
   useEffect(() => {
@@ -64,6 +72,7 @@ const CarouselItem = ({
   return (
     <div
       className={classnames('min-w-0 shrink-0 grow-0', className)}
+      aria-label={`Card ${index} of ${total}`}
       ref={itemRef}
     >
       {children}
@@ -83,8 +92,8 @@ const CarouselPrevious = ({ children, scrollByCards = 2 }: CarouselIconProps) =>
     scrollEl.scrollBy({ left: -stepPx*scrollByCards, behavior: 'smooth' });
   };
   return (
-    <button className='absolute top-1/2' onClick={handleScroll} aria-label='Previous'>
-      {children ?? `<`}
+    <button className='absolute bottom-1/2' onClick={handleScroll} aria-label='Previous Slide'>
+       {children ?? <Image src='/images/icons/left-arrow.svg' alt='Left arrow Image' width={40} height={40}/>}
     </button>
   );
 };
@@ -97,8 +106,8 @@ const CarouselNext = ({ children, scrollByCards = 2 }: CarouselIconProps) => {
     scrollEl?.scrollBy({ left: stepPx*scrollByCards, behavior: 'smooth' });
   };
   return (
-    <button className='absolute top-1/2 right-0' onClick={handleScroll} aria-label='Next'>
-      {children ?? `>`}
+    <button className='absolute bottom-1/2 right-0' onClick={handleScroll} aria-label='Next Slide'>
+      {children ?? <Image src='/images/icons/right-arrow.svg' alt='Right arrow Image' width={40} height={40}/>}
     </button>
   );
 };
