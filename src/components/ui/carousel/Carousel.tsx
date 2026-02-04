@@ -43,31 +43,33 @@ const CarouselContent = ({ children, className }: ChildrenProps) => {
   }, [setScrollEl]);
 
   return (
-    <div className={classnames('flex overflow-x-auto', className)} ref={carouselRef}>
+    <div
+      className={classnames('flex overflow-x-auto', className)}
+      ref={carouselRef}
+    >
       {children}
     </div>
   );
 };
 
-interface CarouselItemProps extends ChildrenProps{
-  index: number,
-  total: number
+interface CarouselItemProps extends ChildrenProps {
+  index: number;
+  total: number;
 }
 
 const CarouselItem = ({
   children,
   className,
   index,
-  total
+  total,
 }: CarouselItemProps) => {
   const itemRef = useRef<HTMLDivElement | null>(null);
   const { setStepPx } = useCarouselContext();
 
   useEffect(() => {
-    if(!itemRef.current)
-      return;
-    setStepPx(itemRef.current.offsetWidth)
-  },[setStepPx]);
+    if (!itemRef.current) return;
+    setStepPx(itemRef.current.offsetWidth);
+  }, [setStepPx]);
 
   return (
     <div
@@ -80,20 +82,34 @@ const CarouselItem = ({
   );
 };
 
-interface CarouselIconProps extends OptionalChildrenProps{
-  scrollByCards?: number
-} 
+interface CarouselIconProps extends OptionalChildrenProps {
+  scrollByCards?: number;
+}
 
-const CarouselPrevious = ({ children, scrollByCards = 2 }: CarouselIconProps) => {
+const CarouselPrevious = ({
+  children,
+  scrollByCards = 2,
+}: CarouselIconProps) => {
   const { scrollEl, stepPx } = useCarouselContext();
 
   const handleScroll = () => {
     if (!scrollEl) return;
-    scrollEl.scrollBy({ left: -stepPx*scrollByCards, behavior: 'smooth' });
+    scrollEl.scrollBy({ left: -stepPx * scrollByCards, behavior: 'smooth' });
   };
   return (
-    <button className='absolute bottom-1/2' onClick={handleScroll} aria-label='Previous Slide'>
-       {children ?? <Image src='/images/icons/left-arrow.svg' alt='Left arrow Image' width={40} height={40}/>}
+    <button
+      className='absolute bottom-1/2 cursor-pointer'
+      onClick={handleScroll}
+      aria-label='Previous Slide'
+    >
+      {children ?? (
+        <Image
+          src='/images/icons/left-arrow.svg'
+          alt='Left arrow Image'
+          width={40}
+          height={40}
+        />
+      )}
     </button>
   );
 };
@@ -103,11 +119,22 @@ const CarouselNext = ({ children, scrollByCards = 2 }: CarouselIconProps) => {
 
   const handleScroll = () => {
     if (!scrollEl) return;
-    scrollEl?.scrollBy({ left: stepPx*scrollByCards, behavior: 'smooth' });
+    scrollEl?.scrollBy({ left: stepPx * scrollByCards, behavior: 'smooth' });
   };
   return (
-    <button className='absolute bottom-1/2 right-0' onClick={handleScroll} aria-label='Next Slide'>
-      {children ?? <Image src='/images/icons/right-arrow.svg' alt='Right arrow Image' width={40} height={40}/>}
+    <button
+      className='absolute right-0 bottom-1/2 cursor-pointer'
+      onClick={handleScroll}
+      aria-label='Next Slide'
+    >
+      {children ?? (
+        <Image
+          src='/images/icons/right-arrow.svg'
+          alt='Right arrow Image'
+          width={40}
+          height={40}
+        />
+      )}
     </button>
   );
 };
