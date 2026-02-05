@@ -11,11 +11,6 @@ interface ChildrenProps {
   className?: string;
 }
 
-interface OptionalChildrenProps {
-  children?: ReactNode;
-  className?: string;
-}
-
 const Carousel = ({ children }: ChildrenProps) => {
   const [scrollEl, setScrollEl] = useState<HTMLDivElement | null>(null);
   const [stepPx, setStepPx] = useState(300);
@@ -82,13 +77,16 @@ const CarouselItem = ({
   );
 };
 
-interface CarouselIconProps extends OptionalChildrenProps {
+interface CarouselIconProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   scrollByCards?: number;
+  children?: ReactNode;
+  className?: string;
 }
 
 const CarouselPrevious = ({
   children,
   scrollByCards = 2,
+  ...rest
 }: CarouselIconProps) => {
   const { scrollEl, stepPx } = useCarouselContext();
 
@@ -101,6 +99,7 @@ const CarouselPrevious = ({
       className='absolute bottom-1/2 cursor-pointer'
       onClick={handleScroll}
       aria-label='Previous Slide'
+      {...rest}
     >
       {children ?? (
         <Image

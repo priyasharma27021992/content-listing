@@ -89,49 +89,51 @@ const DiscoverTabs = () => {
     },
   ];
   return (
-    <section className='w-full rounded border border-gray-400 py-2'>
-      <Tabs>
-        <TabsList>
-          {tabData?.map((tabKey) => (
-            <TabsTrigger key={tabKey.city} value={tabKey.city}>
-              {tabKey.city}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-        {tabData?.map((tab) => (
-          <TabsContent key={tab.city} value={tab.city}>
-            <div className='flex flex-row gap-2'>
-              <Image
-                src={tab.image.src}
-                alt={tab.image.alt}
-                width='200'
-                height='100'
-              />
-              <div className='h-full max-h-80 w-full overflow-scroll'>
-                {tab.city}
-                {tab.priceRange.map((ele) => (
-                  <button
-                    className='my-2 flex w-full flex-row items-center justify-between rounded border border-gray-200 p-2'
-                    key={ele.month}
-                  >
-                    <span>{ele.month}</span>
-                    <div>
-                      <span>
-                        {ele.currency}&nbsp;
-                        {ele.fromPrice}
-                      </span>
-                      <span>-</span>
-                      <span>
-                        {ele.currency}&nbsp;
-                        {ele.toPrice}
-                      </span>
-                    </div>
-                  </button>
-                ))}
+    <section className='w-full rounded border border-gray-400'>
+      <Tabs defaultTab={0}>
+        <>
+          <TabsList>
+            {tabData?.map((tabKey, index) => (
+              <TabsTrigger key={tabKey.city} value={index}>
+                {tabKey.city}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          {tabData?.map((tab, index) => (
+            <TabsContent key={tab.city} value={index}>
+              <div className='flex flex-row gap-2'>
+                <Image
+                  src={tab.image.src}
+                  alt={tab.image.alt}
+                  width='200'
+                  height='100'
+                />
+                <div className='h-full max-h-80 w-full overflow-scroll'>
+                  {tab.city}
+                  {tab.priceRange.map((ele) => (
+                    <button
+                      className='my-2 flex w-full flex-row items-center justify-between rounded border border-gray-200 p-2'
+                      key={ele.month}
+                    >
+                      <span>{ele.month}</span>
+                      <div>
+                        <span>
+                          {ele.currency}&nbsp;
+                          {ele.fromPrice}
+                        </span>
+                        <span>-</span>
+                        <span>
+                          {ele.currency}&nbsp;
+                          {ele.toPrice}
+                        </span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
-          </TabsContent>
-        ))}
+            </TabsContent>
+          ))}
+        </>
       </Tabs>
     </section>
   );

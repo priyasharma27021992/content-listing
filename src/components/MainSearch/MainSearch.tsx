@@ -1,3 +1,5 @@
+import { CalendarPopover } from '../calendar-popover/CalendarPopover';
+
 const MainSearch = () => {
   return (
     <section className='w-full'>
@@ -11,7 +13,7 @@ const MainSearch = () => {
         </fieldset>
         <fieldset className='basis-2/5 border-2'>
           <legend>Date</legend>
-          <input />
+          <CalendarPopover />
         </fieldset>
         <fieldset className='basis-2/5 border-2'>
           <legend>Guest</legend>

@@ -13,7 +13,8 @@ const PopoverTrigger = ({ children, className }: ChildrenProps) => {
   return <div className={className}>{children}</div>;
 };
 
-const PopoverContent = ({ children, className }: ChildrenProps) => {
+const PopoverContent = ({ open, children, className }: ChildrenProps) => {
+  if (!open) return null;
   return <div className={className}>{children}</div>;
 };
 
