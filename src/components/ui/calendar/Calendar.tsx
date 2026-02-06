@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { Button } from '../button';
 
 const MONTHS_NAME = [
@@ -21,7 +22,12 @@ interface CalendarProps {
   mode?: 'date' | 'range';
 }
 
-export const Calendar = ({ mode = 'date' }: CalendarProps) => {
+export const Calendar = ({
+  mode = 'date',
+  date,
+  handleDate,
+}: CalendarProps) => {
+  const ref = useRef(null);
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth();
 
@@ -29,11 +35,16 @@ export const Calendar = ({ mode = 'date' }: CalendarProps) => {
 
   const handleDateSelect = (selectedDate: number) => {
     const newDate = new Date(currentYear, currentMonth, selectedDate);
+    handleDate(newDate);
     console.log('baby', newDate);
   };
 
+  useEffect(() => {
+    if (!ref.current) return;
+  }, []);
+
   return (
-    <div className=''>
+    <div className='' ref={ref}>
       <p>{MONTHS_NAME[currentMonth]}</p>
       <div className='grid w-100 grid-cols-7 gap-2 border p-2'>
         {Array(daysInMonth)

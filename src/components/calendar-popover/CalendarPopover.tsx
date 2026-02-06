@@ -1,23 +1,32 @@
 'use client';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button, Popover, PopoverContent, PopoverTrigger } from '../ui';
 import { Calendar } from '../ui/calendar/Calendar';
 
-export const CalendarPopover = () => {
+export const CalendarPopover = ({ date, handleDate }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const ref = useRef(null);
   const toggle = () => {
-    setOpen((prev) => !prev);
+    console.log('baby here');
+    setOpen((prev) => {
+      return !prev;
+    });
   };
   return (
-    <div>
-      <Popover className='relative'>
-        <PopoverTrigger className=''>
-          <Button onClick={toggle}>Enter Date</Button>
-        </PopoverTrigger>
-        <PopoverContent open={open} className='absolute top-[50%]'>
-          <Calendar />
-        </PopoverContent>
-      </Popover>
-    </div>
+    <Popover className='relative'>
+      <PopoverTrigger className=''>
+        <Button className='' onClick={toggle}>
+          {date}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent
+        open={open}
+        handleClose={toggle}
+        ref={ref}
+        className='absolute z-2 my-1 rounded-md bg-gray-300 p-2'
+      >
+        <Calendar date={date} handleDate={handleDate} />
+      </PopoverContent>
+    </Popover>
   );
 };
