@@ -1,11 +1,26 @@
 'use client';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { CalendarPopover } from '../calendar-popover/CalendarPopover';
+import { RangeDateType } from '../ui/calendar/types';
 
 const MainSearch = () => {
-  const [travelDate, setTravelDate] = useState(new Date());
-  const handleSubmit = (e) => {
+  const now = new Date();
+  const [travelDate, setTravelDate] = useState<RangeDateType>({
+    start: now,
+    end:
+      now.getFullYear() === 11
+        ? new Date(now.getFullYear() + 1, 1, 0)
+        : new Date(now.getFullYear(), now.getMonth() + 1, 1),
+  });
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+  };
+
+  const handleTravelDate = (date: RangeDateType) => {
+    setTravelDate({
+      start: date.start,
+      end: date.end,
+    });
   };
 
   return (
@@ -20,10 +35,7 @@ const MainSearch = () => {
         </fieldset>
         <fieldset className='basis-2/5 border-2'>
           <legend>Date</legend>
-          <CalendarPopover
-            date={travelDate.toDateString()}
-            handleDate={setTravelDate}
-          />
+          <CalendarPopover date={travelDate} handleDate={handleTravelDate} />
         </fieldset>
         <fieldset className='basis-2/5 border-2'>
           <legend>Guest</legend>

@@ -1,31 +1,23 @@
 'use client';
-import { useRef, useState } from 'react';
-import { Button, Popover, PopoverContent, PopoverTrigger } from '../ui';
+import { Popover, PopoverContent, PopoverTrigger } from '../ui';
 import { Calendar } from '../ui/calendar/Calendar';
+import { RangeDateType } from '../ui/calendar/types';
 
-export const CalendarPopover = ({ date, handleDate }) => {
-  const [open, setOpen] = useState<boolean>(false);
-  const ref = useRef(null);
-  const toggle = () => {
-    console.log('baby here');
-    setOpen((prev) => {
-      return !prev;
-    });
-  };
+interface CalendarPopoverProps {
+  date: RangeDateType;
+  handleDate: (date: RangeDateType) => void;
+  mode?: 'range' | 'date';
+}
+
+export const CalendarPopover = ({ date, handleDate }: CalendarPopoverProps) => {
   return (
     <Popover className='relative'>
       <PopoverTrigger className=''>
-        <Button className='' onClick={toggle}>
-          {date}
-        </Button>
+        {date.start.toDateString()}{' '}
+        {date?.end && <span>to {date.end.toDateString()}</span>}
       </PopoverTrigger>
-      <PopoverContent
-        open={open}
-        handleClose={toggle}
-        ref={ref}
-        className='absolute z-2 my-1 rounded-md bg-gray-300 p-2'
-      >
-        <Calendar date={date} handleDate={handleDate} />
+      <PopoverContent className='absolute inset-0 z-2 my-1 rounded-md bg-gray-300 p-2'>
+        <Calendar date={date} handleDate={handleDate} mode='range' />
       </PopoverContent>
     </Popover>
   );

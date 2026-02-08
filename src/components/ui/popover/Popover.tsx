@@ -1,5 +1,8 @@
 'use client';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
+import classNames from 'classnames';
+
+import styles from './Popover.module.css';
 
 interface ChildrenProps {
   children: ReactNode;
@@ -11,29 +14,36 @@ const Popover = ({ children, className }: ChildrenProps) => {
 };
 
 const PopoverTrigger = ({ children, className }: ChildrenProps) => {
-  return <div className={className}>{children}</div>;
+  const onClick = () => {
+    const pop = document.getElementById('popover-content');
+    pop?.togglePopover();
+  };
+
+  return (
+    <button
+      className={classNames(styles.popoverTrigger, className)}
+      onClick={onClick}
+      popoverTarget='popover-content'
+    >
+      {children}
+    </button>
+  );
 };
 
-const PopoverContent = ({
-  open,
-  children,
-  className,
-  ref,
-  handleClose,
-}: ChildrenProps) => {
+const PopoverContent = ({ children, className }: ChildrenProps) => {
   const onBlur = () => {
+    const pop = document.getElementById('popover-content');
+    pop?.hidePopover();
     console.log('came baby on blur');
   };
-  useEffect(() => {
-    if (ref.current) {
-      console.log('ref.current baby', ref.current);
-      ref.current.focus();
-    }
-  }, [open, ref]);
 
-  if (!open) return null;
   return (
-    <div className={className} tabIndex={0} ref={ref} onBlur={onBlur}>
+    <div
+      className={classNames(styles.popoverContent, className)}
+      onBlur={onBlur}
+      id='popover-content'
+      popover='auto'
+    >
       {children}
     </div>
   );

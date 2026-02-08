@@ -1,0 +1,12 @@
+.popoverContent {
+  position: absolute;
+
+  position-anchor: --my-anchor;
+  top: anchor(top);
+  margin-top: 40px;
+  left: anchor(left);
+}
+
+.popoverTrigger {
+  anchor-name: --my-anchor;
+}
